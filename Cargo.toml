@@ -1,0 +1,11 @@
+[package]
+name = "nofile"
+version = "0.1.0"
+authors = ["mihnea <mrg119@ic.ac.uk>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+termion = "*"
+chashmap = "2.2.2"
