@@ -2,7 +2,7 @@
 Ever get tired of writing those damned CMake and Makefile to build your project? Nofile automates the process almost entirely (the only thing you need to add extra are the library flags), building a Makefile for your C project starting from your files which are your entry points (which contain main() ). Nofile is written in rust and it is a multi-threaded program, so it is suited for large projects as well
 
 --- USAGE ---
-To build project use either "cargo build" or "cargp build --release" (need rust installed for that)
+To build project use either "cargo build" or "cargo build --release" (need rust installed for that)
 After that, either do "cargo run" or "cargo run --release" followed by the entrypoints for your executables.
 What I mean is: say you want to build 3 executables, and each of them have an entry point called exe1.c exe2.c and exe3.c
 
