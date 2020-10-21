@@ -4,7 +4,7 @@ Ever get tired of writing those damned CMake and Makefile to build your project?
 --- USAGE ---
 To build project use either "cargo build" or "cargo build --release" (need rust installed for that)
 After that, either do "cargo run" or "cargo run --release" followed by the entrypoints for your executables.
-What I mean is: say you want to build 3 executables, and each of them have an entry point called exe1.c exe2.c and exe3.c
+What this means: say you want to build 3 executables, and each of them have an entry point called exe1.c exe2.c and exe3.c
 
 Run "cargo run --release <path to exe1.c> <path to exe2.c> <path to exe3.c>" and this will build a Makefile which will compile all 3 executables.
 !!! IF YOU DO USE EXTERNAL LIBRARIES !!! You will need to manually add the library flags to the Makefile, but it shouldn't be much of a bother.
@@ -14,3 +14,5 @@ Alternatively, you can take the binary executables of nofile from target/debug o
 
 *The building of the makefile is very fast, given that it's doing the building in a multithreaded fashion, using the CHashMap crate from cargo (big thanks to the creator of that), so it's suitable for big projects.
 For optimal performance make sure your entry point is in the same folder as the one where your entry points are, or relatively close
+
+Additional improvements would be mixing kernel threads with Rust's green threads. Right now even if the program is multi-threaded, the threads are rust-specific threads, therefore all syscalls (e.g opening a file) will halt the whole program. Mixing kernel threads with green threads would make only the threads associated with the specific kernel thread which is opening the file freeze, instead of trapping the whole program while a syscall is processed. However, this optimization is beyond the scope of this project.
